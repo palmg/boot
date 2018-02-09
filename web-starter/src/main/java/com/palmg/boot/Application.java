@@ -1,4 +1,4 @@
-package com.palmg.boot.webcore;
+package com.palmg.boot;
 
 import java.util.List;
 

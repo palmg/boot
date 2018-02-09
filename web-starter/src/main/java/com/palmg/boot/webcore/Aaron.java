@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
+
+import com.palmg.boot.Application;
 import com.palmg.security.properties.PropertyCrypto;
 import com.palmg.security.properties.exception.FileLoadException;
 
