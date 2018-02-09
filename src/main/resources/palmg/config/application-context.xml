@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- 连接池配置 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="url" value="${plamg.jdbc.url}" />
+		<property name="username" value="${plamg.jdbc.name}" />
+		<property name="password" value="${plamg.jdbc.passwd}" />
+		<property name="initialSize" value="${plamg.jdbc.initialSize}" />
+		<property name="minIdle" value="${plamg.jdbc.minIdle}" />
+		<property name="maxActive" value="${plamg.jdbc.maxActive}" />
+		<property name="maxWait" value="${plamg.jdbc.maxWait}" />
+		<property name="poolPreparedStatements" value="${plamg.jdbc.poolPreparedStatements}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"  value="${plamg.jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+		<property name="validationQuery" value="${plamg.jdbc.validationQuery}" />
+		<property name="validationQueryTimeout" value="${plamg.jdbc.validationQueryTimeout}" />
+		<property name="testOnBorrow" value="${plamg.jdbc.testOnBorrow}" />
+		<property name="testOnReturn" value="${plamg.jdbc.testOnReturn}" />
+		<property name="testWhileIdle" value="${plamg.jdbc.testWhileIdle}" />
+		<property name="keepAlive" value="${plamg.jdbc.keepAlive}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${plamg.jdbc.timeBetweenEvictionRunsMillis}" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${plamg.jdbc.minEvictableIdleTimeMillis}" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="${plamg.jdbc.filters}" />
+	</bean>
+
+	<context:component-scan base-package="com.palmg.boot.test">
+	</context:component-scan>
+</beans>
