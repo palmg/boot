@@ -8,9 +8,13 @@ import org.springframework.boot.SpringApplication;
 import com.palmg.security.properties.PropertyCrypto;
 import com.palmg.security.properties.exception.FileLoadException;
 
-public class Lunch {
-	static Logger LOG = LoggerFactory.getLogger(Lunch.class);
+public class Aaron {
+	static Logger LOG = LoggerFactory.getLogger(Aaron.class);
 	public static void main(String[] args) {
+		new Aaron().run(args);
+	}
+	
+	public void run(String[] args) {
 		Properties properties = null;
 		try {
 			properties = PropertyCrypto.getNew().decryptFile();

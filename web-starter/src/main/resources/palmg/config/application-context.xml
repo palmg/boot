@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- 连接池配置 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -17,7 +18,8 @@
 		<property name="maxActive" value="${plamg.jdbc.maxActive}" />
 		<property name="maxWait" value="${plamg.jdbc.maxWait}" />
 		<property name="poolPreparedStatements" value="${plamg.jdbc.poolPreparedStatements}" />
-		<property name="maxPoolPreparedStatementPerConnectionSize"  value="${plamg.jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="${plamg.jdbc.maxPoolPreparedStatementPerConnectionSize}" />
 		<property name="validationQuery" value="${plamg.jdbc.validationQuery}" />
 		<property name="validationQueryTimeout" value="${plamg.jdbc.validationQueryTimeout}" />
 		<property name="testOnBorrow" value="${plamg.jdbc.testOnBorrow}" />
@@ -31,6 +33,5 @@
 		<property name="filters" value="${plamg.jdbc.filters}" />
 	</bean>
 
-	<context:component-scan base-package="com.palmg.boot.test">
-	</context:component-scan>
+	<context:component-scan base-package="com.palmg.boot"></context:component-scan>
 </beans>
