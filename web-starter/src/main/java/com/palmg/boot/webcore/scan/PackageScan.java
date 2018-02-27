@@ -29,6 +29,7 @@ public class PackageScan {
 	static private final String BaseResource = "classpath:/palmg/config/application-context.xml";
 	static private final String NAN = "NaN"; // 错误字符串标记
 	private Class<?> launchClass;// 启动类
+	private String launchPackage;// 启动路径
 	private String[] baseScanPackage; // 基础扫描路径
 	private String[] beanScanPackage; // spring bean 扫描
 	private String[] entityScanPackage; // Jpa entity 扫描
@@ -36,6 +37,10 @@ public class PackageScan {
 	private String[] resourceScanPackage; // 配置文件加载路径
 
 	public PackageScan() {
+	}
+
+	public PackageScan(String launchPackage) {
+		this.launchPackage = launchPackage;
 	}
 
 	public PackageScan(Class<?> launchClass) {
@@ -150,24 +155,15 @@ public class PackageScan {
 	}
 
 	private void meger() {
-		boolean isHasBasePackage = false;
 		if (checkIsNaNList(baseScanPackage)) {
-			LOG.warn("Default Scan package undefined!");
-		} else {
-			isHasBasePackage = true;
+			LOG.info("Base scan package undefined! Use the last of StackTrace list element as the base package: " + launchPackage);
+			baseScanPackage = new String[1];
+			baseScanPackage[0] = launchPackage;
 		}
-		if (checkIsNaNList(beanScanPackage)) {
-			beanScanPackage = isHasBasePackage ? baseScanPackage : null;
-		}
-		if (checkIsNaNList(entityScanPackage)) {
-			entityScanPackage = isHasBasePackage ? baseScanPackage : null;
-		}
-		if (checkIsNaNList(jpaScanPackage)) {
-			jpaScanPackage = isHasBasePackage ? baseScanPackage : null;
-		}
-		if (checkIsNaNList(resourceScanPackage)) {
-			resourceScanPackage = null;
-		}
+		beanScanPackage = checkIsNaNList(beanScanPackage) ? baseScanPackage : beanScanPackage;
+		entityScanPackage = checkIsNaNList(entityScanPackage) ? baseScanPackage : entityScanPackage;
+		jpaScanPackage = checkIsNaNList(jpaScanPackage) ? baseScanPackage : jpaScanPackage;
+		resourceScanPackage = checkIsNaNList(resourceScanPackage) ? null : resourceScanPackage;
 		
 		if (null == beanScanPackage) {
 			beanScanPackage = new String[1];

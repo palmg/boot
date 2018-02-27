@@ -17,15 +17,32 @@ import com.palmg.security.properties.exception.FileLoadException;
 
 public class Aaron {
 	static Logger LOG = LoggerFactory.getLogger(Aaron.class);
-
+	
+	static {
+		LOG.info("Static");
+	}
+	
 	private PackageScan packageScan;
 
 	public static void main(String[] args) {
-		new Aaron().launch(args);
+		new Aaron(false).launch(args);
 	}
 
-	public Aaron() {
+	private Aaron(boolean unUseStackTrace){
 		packageScan = new PackageScan();
+	}
+	
+	public Aaron() {
+		String lunchPackage = System.getProperty("palmg.boot.lunchPackage");
+		if(null == lunchPackage) {
+			StackTraceElement[] elements = Thread.currentThread().getStackTrace();
+			StackTraceElement element = elements[elements.length - 1];
+			String className = element.getClassName();
+			int pos = className.lastIndexOf(".");
+			lunchPackage = className.substring(0, pos);
+			System.setProperty("palmg.boot.lunchPackage", lunchPackage);
+		}
+		packageScan = new PackageScan(lunchPackage);
 	}
 
 	public Aaron(Class<?> launchClass) {
