@@ -18,10 +18,6 @@ import com.palmg.security.properties.exception.FileLoadException;
 public class Aaron {
 	static Logger LOG = LoggerFactory.getLogger(Aaron.class);
 	
-	static {
-		LOG.info("Static");
-	}
-	
 	private PackageScan packageScan;
 
 	public static void main(String[] args) {
