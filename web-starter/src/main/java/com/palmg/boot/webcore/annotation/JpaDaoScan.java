@@ -12,6 +12,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Target(ElementType.TYPE)
 @Documented
 @EnableJpaRepositories
+/**
+ * 用于入口类，指定Jap相关的Dao的扫描路径
+ * @author chenkui
+ *
+ */
 public @interface JpaDaoScan {
-	String[] valuse() default {};
+	String[] value() default {};
 }

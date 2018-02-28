@@ -7,6 +7,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EntityScan
 @EnableJpaRepositories
-public @interface ResourceScan {
-	String[] valuse() default {};
-}
+/**
+ * 用于入口类，指定资源包(xml)的加载路径
+ * @author chenkui
+ *
+ */
+public @interface ResourceScan{
+	String[] value() default {};
+}	

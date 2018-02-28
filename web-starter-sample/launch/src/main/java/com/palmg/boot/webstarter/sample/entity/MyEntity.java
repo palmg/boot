@@ -1,4 +1,4 @@
-package com.palmg.boot.webcore.entity;
+package com.palmg.boot.webstarter.sample.entity;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class User implements Serializable {
+public class MyEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id  
@@ -21,9 +21,9 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private String address;
 
-	public User() {}
+	public MyEntity() {}
 	
-	public User(String name, String address) {
+	public MyEntity(String name, String address) {
 		this.name = name;
 		this.address = address;
 	}

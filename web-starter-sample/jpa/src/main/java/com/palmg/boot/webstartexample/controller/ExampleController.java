@@ -1,5 +1,7 @@
 package com.palmg.boot.webstartexample.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.palmg.boot.webstartexample.dao.UserRepository;
+import com.palmg.boot.webstartexample.entity.User;
 
 /**
  * @RestController 注解用于处理Restfull格式的调用
@@ -41,9 +44,9 @@ public class ExampleController {
 	 * @return
 	 */
 	@RequestMapping("/greeting/{data}")
-	public String greeting(@RequestParam(value = "name", defaultValue = "World") String name,
+	public List<User> greeting(@RequestParam(value = "name", defaultValue = "World") String name,
 			@PathVariable String data) {
-		userRepository.findByName("123");
-		return "su";
+		List<User> list = userRepository.findByName("123");
+		return list;
 	}
 }
