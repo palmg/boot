@@ -1,4 +1,4 @@
-package com.palmg.boot.webstartexample.controller;
+package com.palmg.boot.webstarter.sample.config;
 
 import javax.annotation.PostConstruct;
 

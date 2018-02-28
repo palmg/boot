@@ -8,7 +8,7 @@
 		<version>1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.palmg.boot</groupId>
-	<artifactId>web-starter-example</artifactId>
+	<artifactId>web-starter-sample-jpa</artifactId>
 	<version>${palmg.boot.version}</version>
 	<dependencies>
 		<!-- 引入web-starter -->
