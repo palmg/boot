@@ -8,6 +8,7 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.palmg.boot.webcore.anonymous.Anony;
 import com.palmg.boot.webcore.scan.AnnotationConver;
 import com.palmg.boot.webcore.scan.PackageScan;
 import com.palmg.boot.webcore.scan.PackageScanSupportError;

@@ -33,7 +33,6 @@
 		<property name="filters" value="${plamg.jdbc.filters}" />
 	</bean>
 
-	<context:component-scan base-package="com.palmg.boot"></context:component-scan>
-
-    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+	<!-- <context:component-scan base-package="com.palmg.boot"></context:component-scan>
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/> -->
 </beans>

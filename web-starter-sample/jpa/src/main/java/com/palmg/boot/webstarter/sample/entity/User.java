@@ -25,6 +25,12 @@ public class User implements Serializable {
 
 	public User() {}
 	
+	public User(Long id, String name, String address) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+	}
+	
 	public User(String name, String address) {
 		this.name = name;
 		this.address = address;
@@ -52,5 +58,14 @@ public class User implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", address=" + address + "]";
+	}
+	
+	public static String statement() {
+		return "Create Table User (id int(10) Not NULL AUTO_INCREMENT PRIMARY KEY, address varchar(255) NOT NULL, name varchar(255) NOT NULL);";
 	}
 }

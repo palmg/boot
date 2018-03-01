@@ -27,8 +27,7 @@ import com.palmg.boot.webcore.annotation.JpaDaoScan;
 import com.palmg.boot.webcore.annotation.JpaEntityScan;
 import com.palmg.boot.webcore.annotation.ResourceScan;
 import com.palmg.boot.webcore.annotation.Scan;
-import com.palmg.boot.webcore.anonymous.Refer;
-import com.palmg.boot.webcore.anonymous.Single;
+import com.palmg.boot.webcore.anonymous.Anony;
 
 public class PackageScan {
 	static Logger LOG = LoggerFactory.getLogger(PackageScan.class);
@@ -149,36 +148,30 @@ public class PackageScan {
 		System.arraycopy(VALUE_BASE_SCAN_PACKAGE, 0, this.beanScanPackage, 0, VALUE_BASE_SCAN_PACKAGE.length);
 		System.arraycopy(temp, 0, this.beanScanPackage, VALUE_BASE_SCAN_PACKAGE.length, temp.length);
 
-		this.resourceScanPackage = null == this.resourceScanPackage ? VALUE_BASE_RESUYRCE_PACKAGE
-				: (new Single<String[], String[]>() {
-					@Override
-					public String[] of(String[] params) {
-						String[] result = new String[VALUE_BASE_RESUYRCE_PACKAGE.length + params.length];
-						System.arraycopy(VALUE_BASE_RESUYRCE_PACKAGE, 0, result, 0, VALUE_BASE_RESUYRCE_PACKAGE.length);
-						System.arraycopy(params, 0, result, VALUE_BASE_RESUYRCE_PACKAGE.length, params.length);
-						return result;
-					}
-				}).of(this.resourceScanPackage);
+		this.resourceScanPackage = null == this.resourceScanPackage ? VALUE_BASE_RESUYRCE_PACKAGE : Anony.of(() -> {
+			String[] result = new String[VALUE_BASE_RESUYRCE_PACKAGE.length + this.resourceScanPackage.length];
+			System.arraycopy(VALUE_BASE_RESUYRCE_PACKAGE, 0, result, 0, VALUE_BASE_RESUYRCE_PACKAGE.length);
+			System.arraycopy(this.resourceScanPackage, 0, result, VALUE_BASE_RESUYRCE_PACKAGE.length,
+					this.resourceScanPackage.length);
+			return result;
+		});
 	}
 
 	private List<Properties> buildProperties() throws PackageScanSupportError {
 		ResourcePatternResolver resourceLoader = new PathMatchingResourcePatternResolver();
-		String locationPath = System.getProperty(NAME_CONFIG_LOCATION_FIle);
-		String[] propertiesloadpath = null == locationPath ? VALUE_DEFAULT_LOCATION : (new Refer<String[], String>() {
-			@Override
-			public String[] of(String... params) {
-				return Optional.ofNullable(params).map(f -> {
-					return f[0];
-				}).map(f -> {
-					return f.split(",");
-				}).map(f -> {
-					String[] ret = new String[f.length + VALUE_DEFAULT_LOCATION.length];
-					System.arraycopy(f, 0, ret, 0, f.length);
-					System.arraycopy(VALUE_DEFAULT_LOCATION, 0, ret, f.length, VALUE_DEFAULT_LOCATION.length);
-					return ret;
-				}).orElse(VALUE_DEFAULT_LOCATION);
-			}
-		}).of(locationPath);
+		final String[] locationPath = { System.getProperty(NAME_CONFIG_LOCATION_FIle) };
+		String[] propertiesloadpath = null == locationPath ? VALUE_DEFAULT_LOCATION : Anony.of(() -> {
+			return Optional.ofNullable(locationPath).map(f -> {
+				return f[0];
+			}).map(f -> {
+				return f.split(",");
+			}).map(f -> {
+				String[] ret = new String[f.length + VALUE_DEFAULT_LOCATION.length];
+				System.arraycopy(f, 0, ret, 0, f.length);
+				System.arraycopy(VALUE_DEFAULT_LOCATION, 0, ret, f.length, VALUE_DEFAULT_LOCATION.length);
+				return ret;
+			}).orElse(VALUE_DEFAULT_LOCATION);
+		});
 		List<Properties> list = new ArrayList<>(propertiesloadpath.length);
 		for (int index = propertiesloadpath.length - 1; -1 < index; index--) {
 			String path = propertiesloadpath[index];
