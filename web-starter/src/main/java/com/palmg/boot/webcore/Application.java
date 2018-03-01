@@ -36,3 +36,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  *
  */
 public class Application {}
+
+//https://docs.spring.io/spring/docs/5.0.4.RELEASE/spring-framework-reference/web.html#mvc
