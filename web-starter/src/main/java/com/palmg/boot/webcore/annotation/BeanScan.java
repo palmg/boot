@@ -12,10 +12,15 @@ import org.springframework.context.annotation.ComponentScan;
 @Target(ElementType.TYPE)
 @Documented
 @ComponentScan
+/**
+ * 用于入口类，指定spring bean的扫描路径。
+ * @author chenkui
+ *
+ */
 public @interface BeanScan {
 	/**
 	 * 包扫描路径
 	 * @return
 	 */
-	String[] valuse() default {};
+	String[] value() default {};
 }

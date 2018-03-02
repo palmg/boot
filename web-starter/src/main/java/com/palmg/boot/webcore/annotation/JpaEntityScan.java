@@ -12,6 +12,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @Target(ElementType.TYPE)
 @Documented
 @EntityScan
+/**
+ * 用于入口类，指定Jpa实体类的扫描路径
+ * @author chenkui
+ *
+ */
 public @interface JpaEntityScan {
-	String[] valuse() default {};
+	String[] value() default {};
 }
