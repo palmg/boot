@@ -34,7 +34,7 @@ public class PackageScan {
 	static final String NAME_CONFIG_LOCATION_FIle = "palmg.config.location.file"; // 文件加载路径的配置名称
 
 	static final String[] VALUE_DEFAULT_LOCATION = { "classpath:palmg-boot.properties",
-			"classpath:/palmg/config/palmg-boot/properties" }; // 文件加载路径
+			"classpath:palm.config.palmg-boot.properties" }; // 文件加载路径
 	static final String VALUE_DEFAULT_NAME = "palmg-boot"; // 加载文件名称
 
 	static private final String[] VALUE_BASE_SCAN_PACKAGE = { "com.palmg.boot.webcore" };

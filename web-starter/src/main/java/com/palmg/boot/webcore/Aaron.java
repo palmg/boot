@@ -116,6 +116,7 @@ public class Aaron {
 			System.exit(0);
 		}
 		properties.put("spring.config.name", "palmg-boot");
+		properties.put("spring.profiles.active", "dev");
 		try {
 			//属性转换，将相关配置写入到Application的Class对象上。
 			new AnnotationConver(this.packageScan).conver(); 

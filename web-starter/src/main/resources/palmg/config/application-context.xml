@@ -27,9 +27,9 @@
 		<property name="testWhileIdle" value="${plamg.jdbc.testWhileIdle}" />
 		<property name="keepAlive" value="${plamg.jdbc.keepAlive}" />
 		<property name="timeBetweenEvictionRunsMillis" value="${plamg.jdbc.timeBetweenEvictionRunsMillis}" />
-		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<!--配置一个连接在池中最小生存的时间，单位是毫秒 -->
 		<property name="minEvictableIdleTimeMillis" value="${plamg.jdbc.minEvictableIdleTimeMillis}" />
-		<!-- 配置监控统计拦截的filters -->
+		<!--配置监控统计拦截的filters -->
 		<property name="filters" value="${plamg.jdbc.filters}" />
 	</bean>
 
