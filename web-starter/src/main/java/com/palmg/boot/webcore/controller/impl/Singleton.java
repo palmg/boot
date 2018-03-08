@@ -1,7 +1,5 @@
 package com.palmg.boot.webcore.controller.impl;
 
-import java.io.Serializable;
-
 import com.palmg.boot.webcore.controller.Result;
 
 /**
