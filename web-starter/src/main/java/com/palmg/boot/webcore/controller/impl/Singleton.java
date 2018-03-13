@@ -1,7 +1,5 @@
 package com.palmg.boot.webcore.controller.impl;
 
-import java.io.Serializable;
-
 import com.palmg.boot.webcore.controller.Result;
 
 /**
@@ -15,6 +13,10 @@ public class Singleton implements Result {
 	private String msg;
 	private Object data;
 
+	public Singleton() {
+		
+	}
+	
 	public Singleton(int code, String msg, Object data) {
 		this.code = code;
 		this.msg = msg;
