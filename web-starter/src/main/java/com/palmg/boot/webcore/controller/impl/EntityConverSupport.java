@@ -20,17 +20,18 @@ public class EntityConverSupport implements ConverSupport {
 	public Result conver(Object returnValue, ReturnBind annot) {
 		Class<?> klass = returnValue.getClass();
 		Result result;
-		if(Collection.class.isAssignableFrom(klass)) {
+		if (Collection.class.isAssignableFrom(klass)) {
 			@SuppressWarnings("unchecked")
-			Collection<? extends Object> collection = (Collection<? extends Object>)returnValue;
+			Collection<? extends Object> collection = (Collection<? extends Object>) returnValue;
 			result = new MulitiEntity(SUCCESS_CODE, SUCCESS_MSG, returnValue, collection.size());
-		}else if(Page.class.isAssignableFrom(klass)){
+		} else if (Page.class.isAssignableFrom(klass)) {
 			@SuppressWarnings("unchecked")
-			Page<? extends Object> page = (Page<? extends Object>)returnValue;
-			result = new PageEntity(SUCCESS_CODE, SUCCESS_MSG, page.getContent(), page.getTotalElements(), page.getNumber(), page.getSize());
-		}else if(Result.class.isAssignableFrom(klass)) {
-			result=(Result)returnValue;
-		}else {
+			Page<? extends Object> page = (Page<? extends Object>) returnValue;
+			result = new PageEntity(SUCCESS_CODE, SUCCESS_MSG, page.getContent(), page.getTotalElements(),
+					page.getNumber(), page.getSize());
+		} else if (Result.class.isAssignableFrom(klass)) {
+			result = (Result) returnValue;
+		} else {
 			result = new Singleton(SUCCESS_CODE, SUCCESS_MSG, returnValue);
 		}
 		return result;
