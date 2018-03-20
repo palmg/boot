@@ -28,6 +28,8 @@ public class EntityConverSupport implements ConverSupport {
 			@SuppressWarnings("unchecked")
 			Page<? extends Object> page = (Page<? extends Object>)returnValue;
 			result = new PageEntity(SUCCESS_CODE, SUCCESS_MSG, page.getContent(), page.getTotalElements(), page.getNumber(), page.getSize());
+		}else if(Result.class.isAssignableFrom(klass)) {
+			result=(Result)returnValue;
 		}else {
 			result = new Singleton(SUCCESS_CODE, SUCCESS_MSG, returnValue);
 		}

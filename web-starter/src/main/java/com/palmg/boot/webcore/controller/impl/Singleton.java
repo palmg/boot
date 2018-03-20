@@ -13,6 +13,10 @@ public class Singleton implements Result {
 	private String msg;
 	private Object data;
 
+	public Singleton() {
+		
+	}
+	
 	public Singleton(int code, String msg, Object data) {
 		this.code = code;
 		this.msg = msg;
