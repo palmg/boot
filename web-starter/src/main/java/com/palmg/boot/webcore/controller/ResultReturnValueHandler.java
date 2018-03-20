@@ -1,6 +1,10 @@
 package com.palmg.boot.webcore.controller;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+
 import org.springframework.core.MethodParameter;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
@@ -21,7 +25,14 @@ public class ResultReturnValueHandler implements HandlerMethodReturnValueHandler
 
 	@Override
 	public boolean supportsReturnType(MethodParameter returnType) {
-		return true;
+		Method method = returnType.getMethod();
+		if(null != method) {
+			Class<?> klass = method.getDeclaringClass();
+			Annotation annot = klass.getAnnotation(RestController.class);
+			return null != annot;
+		}else {
+			return false;
+		}
 	}
 
 	@Override
